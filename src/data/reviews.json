@@ -22,5 +22,29 @@
     "rating": 4,
     "image": "https://randomuser.me/api/portraits/men/64.jpg",
     "review": "Very professional service with affordable pricing. Looking forward to my next trip! are amazing"
+  },
+  {
+    "id": 4,
+    "name": "Foisal Ahmed",
+    "location": "Dhaka",
+    "rating": 4,
+    "image": "https://randomuser.me/api/portraits/men/54.jpg",
+    "review": "Very professional service with affordable pricing. Looking forward to my next trip! are amazing"
+  },
+  {
+    "id": 5,
+    "name": "Sadiul Islam",
+    "location": "Dhaka",
+    "rating": 5,
+    "image": "https://randomuser.me/api/portraits/men/14.jpg",
+    "review": "Very professional service with affordable pricing. Looking forward to my next trip! are amazing"
+  },
+  {
+    "id": 6,
+    "name": "Mymoonah Islam",
+    "location": "Jashore",
+    "rating": 5,
+    "image": "https://randomuser.me/api/portraits/women/45.jpg",
+    "review": "Very professional service with affordable pricing. Looking forward to my next trip! are amazing"
   }
 ]
