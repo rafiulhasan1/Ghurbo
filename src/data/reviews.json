@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Sozib Hasan",
+    "location": "Dhaka",
+    "rating": 5,
+    "image": "https://randomuser.me/api/portraits/men/35.jpg",
+    "review": "Amazing experience! Everything was perfectly organized and the guide was extremely friendly."
+  },
+  {
+    "id": 2,
+    "name": "Nusrat Jahan",
+    "location": "Rajshahi",
+    "rating": 5,
+    "image": "https://randomuser.me/api/portraits/women/55.jpg",
+    "review": "The trip was unforgettable. I highly recommend GHURBO to anyone who loves traveling."
+  },
+  {
+    "id": 3,
+    "name": "Tanvir Ahmed",
+    "location": "Chattogram",
+    "rating": 4,
+    "image": "https://randomuser.me/api/portraits/men/64.jpg",
+    "review": "Very professional service with affordable pricing. Looking forward to my next trip! are amazing"
+  }
+]
