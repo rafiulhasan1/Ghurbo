@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Sajek Valley Tour",
+    "location": "Rangamati",
+    "price": 3500,
+    "rating": 4.9,
+    "duration": "3 Days",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900"
+  },
+  {
+    "id": 2,
+    "title": "Cox's Bazar",
+    "location": "Chattogram",
+    "price": 4500,
+    "rating": 4.8,
+    "duration": "2 Days",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900"
+  },
+  {
+    "id": 3,
+    "title": "Sundarbans",
+    "location": "Khulna",
+    "price": 6000,
+    "rating": 5.0,
+    "duration": "4 Days",
+    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=900"
+  }
+]
