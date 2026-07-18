@@ -1,3 +1,4 @@
+import CTA from "../../Components/Home/CTA";
 import FeaturedTours from "../../Components/Home/FeaturedTours";
 import Hero from "../../Components/Home/Hero";
 import LatestBlogs from "../../Components/Home/LatestBlogs";
@@ -18,6 +19,7 @@ const Home = () => {
       <TourGuides />
       <Testimonials />
       <LatestBlogs />
+      <CTA />
     </>
   );
 };
