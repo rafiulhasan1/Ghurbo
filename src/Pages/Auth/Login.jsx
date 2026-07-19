@@ -8,7 +8,7 @@ import PasswordInput from "../../Components/Auth/PasswordInput";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-    const { signIn, googleSignIn } = useAuth();
+    const { signIn, googleSignIn , logOut } = useAuth();
 
     const [error, setError] = useState("");
 
@@ -27,12 +27,32 @@ const Login = () => {
         const password = form.password.value;
 
         signIn(email, password)
-            .then(() => {
+            .then(async (result) => {
+                const user = result.user;
+
+                if (!user.emailVerified) {
+                    await logOut();
+
+                    toast.error("Please verify your email before logging in.");
+
+                    return;
+                }
+
                 toast.success("Login Successful!");
 
                 form.reset();
 
                 navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/invalid-credential":
+                        setError("Invalid email or password.");
+                        break;
+
+                    default:
+                        setError(err.message);
+                }
             })
             .catch((err) => {
                 switch (err.code) {

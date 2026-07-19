@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
 
-    const { createUser, updateUserProfile, googleSignIn } = useAuth();
+    const { createUser, updateUserProfile, googleSignIn, verifyEmail, logOut, } = useAuth();
 
     const navigate = useNavigate();
 
@@ -85,14 +85,20 @@ const Register = () => {
         }
 
         createUser(email, password)
-            .then(async (result) => {
-                console.log(result.user);
-
+            .then(async () => {
                 await updateUserProfile(name, photo);
 
-                toast.success("Registration Successful!");
+                await verifyEmail();
+
+                await logOut()
+
+                toast.success(
+                    "Registration successful! Please check your email and verify your account."
+                );
 
                 form.reset();
+
+                navigate("/login", { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
