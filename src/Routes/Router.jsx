@@ -9,6 +9,8 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Profile/Profile";
+import Packages from "../Pages/Packages/Packages";
+import TourDetails from './../Pages/TourDetails/TourDetails';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +49,15 @@ const router = createBrowserRouter([
             <Profile />
           </PrivateRoute>
         ),
-      }
+      },
+      {
+        path: "/packages",
+        element: <Packages />,
+      },
+      {
+        path: "/packages/:id",
+        element: <TourDetails />,
+      },
     ],
   },
 ]);
