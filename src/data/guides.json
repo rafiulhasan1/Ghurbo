@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Boss Bikrom",
     "designation": "Senior Tour Guide",
-    "experience": "7 Years",
+    "experience": "12 Years",
     "rating": 4.9,
     "image": "https://randomuser.me/api/portraits/men/32.jpg"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Rock Romana",
     "designation": "Adventure Guide",
-    "experience": "5 Years",
+    "experience": "7 Years",
     "rating": 4.8,
     "image": "https://randomuser.me/api/portraits/women/44.jpg"
   },
