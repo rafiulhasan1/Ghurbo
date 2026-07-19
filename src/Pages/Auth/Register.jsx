@@ -1,10 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import AuthLayout from "../../Components/Auth/AuthLayout";
 import PasswordInput from "../../Components/Auth/PasswordInput";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+
+    const { createUser, updateUserProfile, googleSignIn } = useAuth();
+
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then(() => {
+                navigate(from);
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    };
 
     const [error, setError] = useState("");
 
@@ -27,12 +47,13 @@ const Register = () => {
         }
 
         if (!email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email)) {
-                return setError("Please enter a valid email address.");
-            }
             return setError("Email is required.");
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            return setError("Please enter a valid email address.");
         }
 
         if (password.length < 8) {
@@ -63,12 +84,19 @@ const Register = () => {
             return setError("Please accept the Terms & Conditions.");
         }
 
-        console.log({
-            name,
-            email,
-            photo,
-            password,
-        });
+        createUser(email, password)
+            .then(async (result) => {
+                console.log(result.user);
+
+                await updateUserProfile(name, photo);
+
+                toast.success("Registration Successful!");
+
+                form.reset();
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
     };
 
     return (
@@ -186,7 +214,7 @@ const Register = () => {
             </div>
 
             {/* Google */}
-            <button className="w-full rounded-xl border border-gray-300 py-3 flex items-center justify-center gap-3 hover:bg-gray-100 transition">
+            <button type="button" onClick={handleGoogleLogin} className="w-full rounded-xl border border-gray-300 py-3 flex items-center justify-center gap-3 hover:bg-gray-100 transition">
 
                 <FcGoogle size={22} />
 

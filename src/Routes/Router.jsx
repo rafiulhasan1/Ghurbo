@@ -6,6 +6,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import ForgotPassword from "../Pages/Auth/ForgotPassword";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,22 @@ const router = createBrowserRouter([
         path: "/forgot-password",
         element: <ForgotPassword />,
       },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      }
     ],
   },
 ]);
