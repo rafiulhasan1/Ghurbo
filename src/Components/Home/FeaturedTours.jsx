@@ -1,8 +1,12 @@
 import tours from "../../data/tours.json";
 import SectionTitle from "./SectionTitle";
 import TourCard from "./TourCard";
+import { Link } from "react-router-dom";
 
 const FeaturedTours = () => {
+
+  const featuredTours = tours.slice(0, 3);
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-24">
 
@@ -14,14 +18,22 @@ const FeaturedTours = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        {tours.map((tour) => (
+        {featuredTours.map((tour) => (
           <TourCard
             key={tour.id}
             tour={tour}
           />
         ))}
-
       </div>
+      <div className="mt-7 flex justify-center">
+        <Link
+          to="/packages"
+          className="btn bg-sky-600 text-white hover:bg-sky-700 p-3 rounded-xl font-semibold"
+        >
+          View All Packages
+        </Link>
+      </div>
+
 
     </section>
   );
