@@ -1,35 +1,44 @@
 const ProfileSummary = ({ user }) => {
+    return (
+        <div className="bg-white rounded-2xl shadow-lg p-6">
 
-  return (
+            <div className="flex flex-col items-center">
 
-    <div className="bg-white rounded-2xl shadow-lg p-6">
+                <img
+                    src={
+                        user?.photoURL ||
+                        "https://i.pravatar.cc/150?img=12"
+                    }
+                    alt="Profile"
+                    className="w-24 h-24 rounded-full border-4 border-sky-500 object-cover"
+                />
 
-      <h2 className="text-2xl font-bold mb-6">
+                <h2 className="text-2xl font-bold mt-4">
+                    {user?.displayName}
+                </h2>
 
-        Profile
+                <p className="text-gray-500">
+                    {user?.email}
+                </p>
 
-      </h2>
+            </div>
 
-      <div className="space-y-4">
+            <div className="mt-8 border-t pt-6">
 
-        <p>
+                <div className="flex justify-between mb-4">
+                    <span>Total Trips</span>
+                    <strong>--</strong>
+                </div>
 
-          <strong>Name:</strong> {user?.displayName}
+                <div className="flex justify-between">
+                    <span>Member Since</span>
+                    <strong>2026</strong>
+                </div>
 
-        </p>
+            </div>
 
-        <p>
-
-          <strong>Email:</strong> {user?.email}
-
-        </p>
-
-      </div>
-
-    </div>
-
-  );
-
+        </div>
+    );
 };
 
 export default ProfileSummary;

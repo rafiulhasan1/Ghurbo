@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { FaCalendarAlt, FaClock } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 import DashboardStats from "../../Components/Dashboard/DashboardStats";
@@ -6,48 +7,98 @@ import RecentBookings from "../../Components/Dashboard/RecentBookings";
 import ProfileSummary from "../../Components/Dashboard/ProfileSummary";
 
 const Dashboard = () => {
+    const { user } = useContext(AuthContext);
 
-  const { user } = useContext(AuthContext);
+    const bookings =
+        JSON.parse(localStorage.getItem("bookings")) || [];
 
-  const bookings =
-    JSON.parse(localStorage.getItem("bookings")) || [];
+    const today = new Date();
 
-  return (
+    const currentDate = today.toLocaleDateString("en-BD", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
 
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    const currentTime = today.toLocaleTimeString("en-BD", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
-      <h1 className="text-4xl font-bold mb-10">
+    return (
+        <section className="max-w-7xl mx-auto px-4 py-10">
 
-        Welcome Back,
+            {/* Header */}
 
-        <span className="text-sky-600">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-10">
 
-          {" "} {user?.displayName}
+                <div>
 
-        </span>
+                    <h1 className="text-4xl md:text-5xl font-bold">
 
-        👋
+                        Welcome Back,
 
-      </h1>
+                        <span className="text-sky-600">
+                            {" "}{user?.displayName || "Traveler"}
+                        </span>
 
-      <DashboardStats bookings={bookings} />
+                        👋
 
-      <div className="grid lg:grid-cols-3 gap-8 mt-10">
+                    </h1>
 
-        <div className="lg:col-span-2">
+                    <p className="text-gray-500 mt-3 text-lg">
+                        Ready for your next adventure?
+                    </p>
 
-          <RecentBookings bookings={bookings} />
+                </div>
 
-        </div>
+                <div className="bg-white rounded-2xl shadow-lg px-6 py-5">
 
-        <ProfileSummary user={user} />
+                    <div className="flex items-center gap-3 text-gray-700">
 
-      </div>
+                        <FaCalendarAlt className="text-sky-600 text-xl" />
 
-    </section>
+                        <span>{currentDate}</span>
 
-  );
+                    </div>
 
+                    <div className="flex items-center gap-3 mt-3 text-gray-700">
+
+                        <FaClock className="text-sky-600 text-xl" />
+
+                        <span>{currentTime}</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {/* Stats */}
+
+            <DashboardStats bookings={bookings} />
+
+            {/* Main Content */}
+
+            <div className="grid lg:grid-cols-3 gap-8 mt-10">
+
+                <div className="lg:col-span-2">
+
+                    <RecentBookings bookings={bookings} />
+
+                </div>
+
+                <div>
+
+                    <ProfileSummary user={user} />
+
+                </div>
+
+            </div>
+
+        </section>
+    );
 };
 
 export default Dashboard;
