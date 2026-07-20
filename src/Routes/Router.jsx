@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import MainLayout from "../Layout/MainLayout";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login";
@@ -14,6 +13,13 @@ import TourDetails from './../Pages/TourDetails/TourDetails';
 import Booking from "../Pages/Booking/Booking";
 import BookingSuccess from "../Pages/BookingSuccess/BookingSuccess";
 import MyBookings from "../Pages/MyBookings/MyBookings";
+import AdminLayout from "../Layouts/AdminLayout";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import ManageTours from './../Pages/Admin/ManageTours';
+import ManageBookings from "../Pages/Admin/ManageBookings";
+import ManageUsers from './../Pages/Admin/ManageUsers';
+import AdminSettings from './../Pages/Admin/AdminSettings';
+import MainLayout from "../Layouts/MainLayout";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +71,7 @@ const router = createBrowserRouter([
         path: "/booking/:id",
         element: (
           <PrivateRoute>
-            <Booking/>
+            <Booking />
           </PrivateRoute>
         ),
       },
@@ -73,7 +79,7 @@ const router = createBrowserRouter([
         path: "/booking-success",
         element: (
           <PrivateRoute>
-            <BookingSuccess/>
+            <BookingSuccess />
           </PrivateRoute>
         ),
       },
@@ -81,12 +87,42 @@ const router = createBrowserRouter([
         path: "/my-bookings",
         element: (
           <PrivateRoute>
-            <MyBookings/>
+            <MyBookings />
           </PrivateRoute>
         ),
       },
     ],
   },
+  {
+    path: "/admin",
+    element: (
+      <PrivateRoute>
+        <AdminLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
+      },
+      {
+        path: "tours",
+        element: <ManageTours />,
+      },
+      {
+        path: "bookings",
+        element: <ManageBookings />,
+      },
+      {
+        path: "users",
+        element: <ManageUsers />,
+      },
+      {
+        path: "settings",
+        element: <AdminSettings />,
+      },
+    ],
+  }
 ]);
 
 export default router;
