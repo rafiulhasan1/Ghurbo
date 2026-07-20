@@ -2,7 +2,7 @@ import { FaMinus, FaPlus } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 
-const BookingForm = ({ user, tour, adults, setAdults, children, setChildren, }) => {
+const BookingForm = ({ user, tour, adults, setAdults, children, setChildren, travelDate, }) => {
 
     const navigate = useNavigate();
 
