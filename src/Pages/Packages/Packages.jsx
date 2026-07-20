@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TourCard from "../../Components/Tour/TourCard";
 import SearchBar from "../../Components/Tour/SearchBar";
 import toursData from "../../data/tours.json";
 import CategoryFilter from "../../Components/Tour/CategoryFilter";
 import SortDropdown from "../../Components/Tour/SortDropdown";
+import Pagination from "../../Components/Tour/Pagination";
 
 const Packages = () => {
 
@@ -11,6 +12,10 @@ const Packages = () => {
     const [sortBy, setSortBy] = useState("default");
 
     const [searchTerm, setSearchTerm] = useState("");
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const toursPerPage = 6;
 
     const filteredTours = useMemo(() => {
         let tours = toursData.filter((tour) => {
@@ -38,6 +43,19 @@ const Packages = () => {
         }
 
         return tours;
+    }, [searchTerm, selectedCategory, sortBy]);
+
+    const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+
+    const startIndex = (currentPage - 1) * toursPerPage;
+
+    const currentTours = filteredTours.slice(
+        startIndex,
+        startIndex + toursPerPage
+    );
+
+    useEffect(() => {
+        setCurrentPage(1);
     }, [searchTerm, selectedCategory, sortBy]);
 
     return (
@@ -129,7 +147,7 @@ const Packages = () => {
                 </div>
             ) : (
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {filteredTours.map((tour) => (
+                    {currentTours.map((tour) => (
                         <TourCard
                             key={tour.id}
                             tour={tour}
@@ -137,6 +155,37 @@ const Packages = () => {
                     ))}
                 </div>
             )}
+            <div className="flex justify-between items-center mt-10 mb-6 text-gray-500 text-sm">
+
+                <p>
+                    Showing{" "}
+                    <span className="font-semibold text-sky-600">
+                        {currentTours.length}
+                    </span>{" "}
+                    of{" "}
+                    <span className="font-semibold text-sky-600">
+                        {filteredTours.length}
+                    </span>{" "}
+                    tours
+                </p>
+
+                <p>
+                    Page{" "}
+                    <span className="font-semibold">
+                        {currentPage}
+                    </span>{" "}
+                    of{" "}
+                    <span className="font-semibold">
+                        {totalPages}
+                    </span>
+                </p>
+
+            </div>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                setCurrentPage={setCurrentPage}
+            />
         </div>
     );
 };
