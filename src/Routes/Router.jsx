@@ -11,6 +11,9 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Pages/Profile/Profile";
 import Packages from "../Pages/Packages/Packages";
 import TourDetails from './../Pages/TourDetails/TourDetails';
+import Booking from "../Pages/Booking/Booking";
+import BookingSuccess from "../Pages/BookingSuccess/BookingSuccess";
+import MyBookings from "../Pages/MyBookings/MyBookings";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +60,30 @@ const router = createBrowserRouter([
       {
         path: "/packages/:id",
         element: <TourDetails />,
+      },
+      {
+        path: "/booking/:id",
+        element: (
+          <PrivateRoute>
+            <Booking/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/booking-success",
+        element: (
+          <PrivateRoute>
+            <BookingSuccess/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-bookings",
+        element: (
+          <PrivateRoute>
+            <MyBookings/>
+          </PrivateRoute>
+        ),
       },
     ],
   },

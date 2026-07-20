@@ -1,4 +1,5 @@
 import { FaCircleCheck } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const BookingCard = ({ tour }) => {
   return (
@@ -62,9 +63,24 @@ const BookingCard = ({ tour }) => {
 
       </div>
 
-      <button className="btn btn-info w-full text-white rounded-xl">
+      <Link
+        to={`/booking/${tour.id}`}
+        className="
+    block
+    w-full
+    text-center
+    bg-sky-600
+    hover:bg-sky-700
+    text-white
+    py-3
+    rounded-xl
+    font-semibold
+    transition-all
+    duration-300
+  "
+      >
         Book This Tour
-      </button>
+      </Link>
 
     </div>
   );
