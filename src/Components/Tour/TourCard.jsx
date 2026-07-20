@@ -10,7 +10,12 @@ const TourCard = ({ tour }) => {
         location,
         duration,
         price,
-        rating
+        discountPrice,
+        rating,
+        reviews,
+        groupSize,
+        category,
+        featured,
     } = tour;
 
     return (
