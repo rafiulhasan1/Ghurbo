@@ -1,6 +1,6 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const TourTable = ({ tours }) => {
+const TourTable = ({ tours, onEdit , onDelete }) => {
     return (
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -66,13 +66,13 @@ const TourTable = ({ tours }) => {
 
                                 <div className="flex justify-center gap-3">
 
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg">
+                                    <button title="Edit Tour" onClick={() => onEdit(tour)} className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg">
 
                                         <FaEdit />
 
                                     </button>
 
-                                    <button className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg">
+                                    <button title="Delete Tour" onClick={() => onDelete(tour.id)} className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg">
 
                                         <FaTrash />
 
