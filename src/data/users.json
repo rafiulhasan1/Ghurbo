@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Sozib Hasan",
+    "email": "sozib@gmail.com",
+    "photo": "https://i.pravatar.cc/150?img=1",
+    "role": "Admin",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Rahim Ahmed",
+    "email": "rahim@gmail.com",
+    "photo": "https://i.pravatar.cc/150?img=2",
+    "role": "User",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "Karim Islam",
+    "email": "karim@gmail.com",
+    "photo": "https://i.pravatar.cc/150?img=3",
+    "role": "User",
+    "status": "Blocked"
+  }
+]
