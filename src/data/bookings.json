@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "userName": "Sozib Hasan",
+    "email": "sozib@gmail.com",
+    "tourName": "Sajek Valley Tour",
+    "travelDate": "2026-08-15",
+    "adults": 2,
+    "children": 1,
+    "total": 13500,
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "userName": "Rahim Ahmed",
+    "email": "rahim@gmail.com",
+    "tourName": "Cox's Bazar",
+    "travelDate": "2026-09-10",
+    "adults": 3,
+    "children": 0,
+    "total": 18000,
+    "status": "Confirmed"
+  },
+  {
+    "id": 3,
+    "userName": "Karim Islam",
+    "email": "karim@gmail.com",
+    "tourName": "Sundarbans",
+    "travelDate": "2026-10-05",
+    "adults": 2,
+    "children": 2,
+    "total": 22000,
+    "status": "Cancelled"
+  }
+]
