@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { createUser as saveUser } from "../../services/userService";
 
 const Register = () => {
 
@@ -86,11 +87,19 @@ const Register = () => {
 
         createUser(email, password)
             .then(async () => {
+
                 await updateUserProfile(name, photo);
+
+                // Save user to MongoDB
+                await saveUser({
+                    name,
+                    email,
+                    photo,
+                });
 
                 await verifyEmail();
 
-                await logOut()
+                await logOut();
 
                 toast.success(
                     "Registration successful! Please check your email and verify your account."
@@ -99,6 +108,7 @@ const Register = () => {
                 form.reset();
 
                 navigate("/login", { replace: true });
+
             })
             .catch((err) => {
                 setError(err.message);
